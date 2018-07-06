@@ -5,6 +5,7 @@
         :style="{width: `${label.width}mm` , height: `${label.height}mm`,
         left: `${label.left}mm`, top: `${label.top}mm`}">
           <image-zone :src="label.image" @change="label.image = $event"></image-zone>
+          <croppa v-model="label.image"></croppa>
         </div>
       </div>
     </div>
