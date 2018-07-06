@@ -3,23 +3,28 @@
       <div class="content">
         <div class="label" v-for="label in labelsLayout"
         :style="{width: `${label.width}mm` , height: `${label.height}mm`,
-        left: `${label.left}mm`, top: `${label.top}mm`}"></div>
+        left: `${label.left}mm`, top: `${label.top}mm`}">
+          <image-zone :src="label.image" @change="label.image = $event"></image-zone>
+        </div>
       </div>
     </div>
 </template>
 
 <script>
+import ImageZone from "@/components/ImageZone";
 export default {
   data() {
     return {
       labels: [
         {
           width: 51,
-          height: 134
+          height: 134,
+          image: ""
         },
         {
           width: 51,
-          height: 134
+          height: 134,
+          image: ""
         }
       ]
     };
@@ -36,6 +41,9 @@ export default {
         return l;
       });
     }
+  },
+  components: {
+    ImageZone
   }
 };
 </script>
@@ -50,6 +58,7 @@ export default {
   width: 51mm;
   height: 134mm;
   position: absolute;
+  overflow: hidden;
 }
 .content {
   position: absolute;
